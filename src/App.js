@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import SearchPage from "./Components/searchPage/searchPage";
+import WeatherForecast from "./Components/forecastPage/weatherForecast";
+
+import { WeatherContext } from "./Helper/Context";
 
 function App() {
+  const [weather, setWeather] = useState(null);
+
+  const returnToHomePage = () => {
+    setWeather(null);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <WeatherContext.Provider value={{ weather, setWeather }}>
+      <div className="flex justify-center items-center flex-col ">
+        <h1
+          className="text-white text-2xl mt-10 mb-10 cursor-pointer"
+          onClick={returnToHomePage}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          Weather <span className="font-bold">Forecast</span>
+        </h1>
+        {!weather && <SearchPage />}
+        {weather && <WeatherForecast />}
+      </div>
+    </WeatherContext.Provider>
   );
 }
 
