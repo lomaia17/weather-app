@@ -67,6 +67,9 @@ const SearchPage = () => {
                 class="mt-2 bg-gradient-to-r from-cyan-500 to-blue-500 w-full hover:bg-teal-700 border-none text-sm border-4 text-white py-2 px-2 rounded-xl"
                 type="button"
                 onClick={getInputValue}
+                onKeyPress={(event) =>
+                  event.key === "Enter" ? getInputValue() : null
+                }
               >
                 Search
               </button>
