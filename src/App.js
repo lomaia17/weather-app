@@ -19,7 +19,7 @@ function App() {
           className="text-white text-2xl mt-10 mb-10 cursor-pointer"
           onClick={returnToHomePage}
         >
-          Weather <span className="font-bold">Forecast</span>
+          Weather <span className="font-bold">Forecast ☀️</span>
         </h1>
         {!weather && <SearchPage />}
         {weather && <WeatherForecast />}
